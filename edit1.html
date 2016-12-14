@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/bootstrap.css" >
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="search.js"></script>
+    <script type="text/javascript">
+        function view(email)
+        {
+            var e = email;
+            var $header = $("<h2 align='center' id='tab'>Edit User Details</h2><br>");
+            var data = JSON.parse(localStorage.getItem('person'));
+            var $foot = $("<div class='modal-footer'>&copy; akhil trivedi</div>");
+            var myObject = data.filter(function (person)
+                    {
+                        return person.email == email;
+                    }
+            );
+            var $div1 =  $("<div class='col-md-7 col-md-offset-3'></div><br>" );
+            for ( var i = 0; i < myObject.length; i++ )
+            {
+                var $line2 = $("<form class='form-group'></form>");
+
+                if (myObject[i].member == "yes")
+                {
+                    $line2.append( $("<input type='checkbox' class='checkbox-inline' id='test' name='test' checked='checked' disabled>&nbsp;&nbsp;<label>Already Member</label><br><br>").val(myObject[i].member));
+                }
+                else
+                {
+                    $line2.append( $("<input type='checkbox' class='checkbox-inline' id='test' name='test'>&nbsp;&nbsp;<label>Want to become Member ?</label><br><br>").val(myObject[i].member));
+                }
+                //$line2.append( $("<input type='checkbox' class='checkbox' id='test' name='test' checked='checked'><label>Member ?</label><br><br>").val(emp.member));
+                $line2.append($("<input  type='text' class='form-control' required><br><br>").val(myObject[i].name));
+                $line2.append($("<input  type='email' class='form-control' required><br><br>").val(myObject[i].email));
+                $line2.append($("<input  type='tel' id='phone' class='form-control' name='phone' required><br><br>").val(myObject[i].mobile).mask("(999) 999-9999"));
+                $line2.append($("<input type='submit' value='Update' id='update' class='form-control'>"));
+                $line2.append($("<br>"));
+                $div1.append($header);
+                $div1.append($line2);
+                $div1.append($foot);
+                $div1.appendTo(document.body);
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

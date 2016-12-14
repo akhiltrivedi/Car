@@ -1,0 +1,82 @@
+<html ng-app="myApp">
+<head>
+    <link rel="stylesheet" href="css/bootstrap.css" >
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <title>Demo Task using angular, js ,bootstrap, html</title>
+
+    <style>
+        .color {
+            color: red;
+            font-size:large;
+        }
+    </style>
+
+</head>
+<body ng-controller="AppController as ctrl">
+<div class="container">
+    <div class="jumbotron">
+        <h1>Car Management System</h1>
+        <h2>Login</h2>
+    </div>
+    <form ng-submit="ctrl.submit()" name="myForm" class="form-group">
+
+        <label>Email</label><input id="email" class="form-control" type="email" ng-model="ctrl.user.email" name="email" placeholder="Enter your Email" required/>
+        <span ng-show="myForm.$dirty && myForm.email.$error.required"><b class="color">This is a required field</b></span>
+        <span ng-show="myForm.$dirty && myForm.email.$invalid"><b class="color">This field is invalid</b></span><br/>
+
+        <label>Password</label><input type="password" ng-minlength="5" ng-model="ctrl.user.pass" class="form-control" name="pass" id="pass" placeholder="Enter your password" required>
+        <span ng-show="myForm.pass.$error.minlength"><b class="color">Password is too short</b></span>
+        <br>
+
+        <input onClick="check()" type="submit"  class=" btn-primary btn-default"   value="Submit" ng-disabled="myForm.$invalid">
+    </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js">
+    </script>
+
+    <script type="text/javascript">
+        angular.module('myApp', [])
+                .controller('AppController', [function() {
+                    var self = this;
+                    self.submit = function() {
+                        console.log('Form is submitted with following user', self.user);
+                    };
+                }]);
+
+        function check()
+        {
+            //Session["controlID"] = "This is my session";
+            sessionStorage.SessionName = "session";
+            //session.set('session');
+
+            //data from session storage of browser
+            var storedName = sessionStorage.getItem('email');
+            var storedPw = sessionStorage.getItem('pass');
+
+            // entered data from the login-form
+            var userName = document.getElementById('email');
+            var userPw = document.getElementById('pass');
+
+            // check if stored data from login-form is equal to data from session storage
+
+            if (userName.value == storedName && userPw.value == storedPw) {
+                window.location = "search.html";
+            }
+            else {
+                window.alert('PLEASE CHECK YOUR CREDENTIALS !!!!')
+            }
+        }$scope.name = JSON.parse( localStorage.getItem('person'));
+
+    </script>
+    <script>
+
+    </script>
+    <br>
+    <div class="modal-footer">&copy; akhil trivedi</div>
+</div>
+</body>
+</html>

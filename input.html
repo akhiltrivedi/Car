@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+<form action="http://www.aspsnippets.com/">
+    <input type="text"/>
+    <input type="button" id="btn" value="Button" />
+    <input type="submit" id="btnSubmit" value="Submit" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        var array = [{ "email": "akhiltrivedi@outlook.com", "pass": "akhil@1", "name": "akhil", "car1": "zen", "year1": "2012", "member": "no", "mobile": "(903) 309-8713" }, { "email": "anandpatel@gmail.com", "pass": "Smith@1", "name": "suresh", "car1": "zen", "year1": "2012", "member": "yes", "mobile": "(903) 309-8799" }, { "email": "contact@akhiltrivedi.com", "pass@1": "akhil@1", "name": "rakesh", "car1": "zen", "year1": "2012", "member": "no", "mobile": "(903) 309-2233" }, { "name": "akhil", "email": "akhiltrivedi@outlook.india", "pass": "akhil@123", "mobile": "(903) 309-8713", "car1": "zen", "car2": "", "year1": "2012", "year2": "", "member": "yes" }, { "name": "karan", "email": "contact@akhiltrivedi.com", "pass": "akhil@123", "mobile": "(903) 309-2233", "car1": "zen", "car2": "", "year1": "2012", "year2": "", "member": "yes" }];
+
+        array = array.filter(function (a) {
+            return a.email !== 'akhiltrivedi@outlook.com';
+        });
+
+        document.write('<pre>' + JSON.stringify(array) + '</pre>');
+    </script>
+</form>
+</body>
+</html>

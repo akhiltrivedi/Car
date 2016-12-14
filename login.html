@@ -1,0 +1,49 @@
+<script>var blob = [{"id":"item-1","href":"google.com","icon":"google.com"},
+{"id":"item-2","href":"youtube.com","icon":"youtube.com"},
+{"id":"item-3","href":"google.com","icon":"google.com"},
+{"id":"item-4","href":"google.com","icon":"google.com"},
+{"id":"item-5","href":"youtube.com","icon":"youtube.com"},
+{"id":"item-6","href":"asos.com","icon":"asos.com"},
+{"id":"item-7","href":"google.com","icon":"google.com"},
+{"id":"item-8","href":"mcdonalds.com","icon":"mcdonalds.com"}];
+debugger
+// define helper functions
+Storage.prototype.setBlob = function (blob)
+{
+for (i in blob) {
+// example of storageObjet: {'item-3': {'href': 'google.com', 'icon': 'google.png'}}
+var struct={};
+for (key in blob[i]) {
+if (key != 'id') {
+struct[key] = blob[i][key];
+}
+};
+this.setObject(blob[i].id, struct);
+}
+}
+
+
+Storage.prototype.setObject = function(key, obj) {
+this.setItem( key, JSON.stringify(obj) );
+};
+
+Storage.prototype.getObject = function(key) {
+return JSON.parse(this.getItem(key));
+};
+
+// do stuff
+sessionStorage.clear();
+sessionStorage.setBlob(blob);
+
+var key = 'item-6';
+var item = sessionStorage.getObject(key);
+item.href = 'stackoverflow.com';
+sessionStorage.setObject(key, item);
+debugger
+for (key in sessionStorage) {
+if (typeof(sessionStorage[key]) == 'string') {
+var item2 = sessionStorage.getObject(key);
+$('#stuff').append( $('<div>').html(item2.href) );
+    }
+    }
+        </script>

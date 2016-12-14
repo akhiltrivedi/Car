@@ -1,0 +1,58 @@
+var app = angular.module('myApp',[]);
+app.controller('searchctrl',function($scope,$http)
+    {
+    $scope.obj = JSON.parse(localStorage.getItem('person'));
+
+    $scope.names = $scope.obj.map(function (user)
+    {
+        return user.name;
+    });
+    $scope.complete=function()
+    {
+        console.log($scope.names);
+        $( "#tags" ).autocomplete({
+            source: $scope.names
+        });
+    };
+        $scope.check=function()
+    {
+
+        $scope.data = JSON.parse(localStorage.getItem('person'));
+
+        $scope.myObject = $scope.data.filter(function (person)
+            {
+                return person.name == document.myForm.tags.value;
+            }
+        );
+        $scope.$div =  $("<div id='one'></div><br>" );
+
+        $scope.$header = $("<h2 align='center' id='tab'>User Details</h2><br>");
+        $scope.$break = $("<br><br><br><br><br><br>");
+
+        //$scope.$line1.append( $( "<td></td>" ).html('<b>Cars</b>' ) );
+        for ( $scope.i = 0; $scope.i < $scope.myObject.length; $scope.i++ )
+        {
+            $scope.$data = $scope.myObject[$scope.i];
+            $scope.$line =  $("<form></form><br>" );
+            $scope.$line.append($("<input  type='text' class='form-control' disabled><br><br>").val($scope.$data.name));
+            $scope.$line.append($("<input  type='email' class='form-control' disabled><br><br>").val($scope.$data.email));
+            $scope.$line.append($("<input  type='tel' id='phone' class='form-control' name='phone' disabled><br><br>").val($scope.$data.mobile).mask("(999) 999-9999"));
+            $scope.$line.append($("<a href='#' onclick='view(\''+$scope.$data.email+'\')'>Edit</a>"));debugger;
+            $scope.$div.append($scope.$break);
+            $scope.$div.append($scope.$header);
+            $scope.$div.append($scope.$line);
+            $scope.$div.appendTo(document.body);
+        }
+        //$scope.$div1.appendTo(document.body);
+    };
+
+   });
+
+
+    $line2.append($("<br>"));
+            $line2.append($("<select class='form-control'><option>select</option><option>zen</option><option>alto</option><option>wagonr</option></select>"));
+            $line2.append($("<br>"));
+            $line2.append($("<select class='form-control'><option>select</option><option>2013</option><option>2014</option><option>2015</option></select>"));
+
+
+

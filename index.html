@@ -1,0 +1,62 @@
+        <html ng-app="myApp">
+        <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+            <link rel="stylesheet" href="css/bootstrap.css" >
+            <link rel="stylesheet" href="css/bootstrap.css.map" >
+            <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+            <link rel="stylesheet" href="css/bootstrap-theme.css">
+            <link rel="stylesheet" href="css/bootstrap.min.css">
+            <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+            <script src="toastr.min.js"></script>
+            <link href="toastr.min.css"/>
+            <script src="toastr.js.map"></script>
+            <script src="js/bootstrap.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+            <script src="login.js"></script>
+            <title>Login - CMS</title>
+            <style>
+                .color
+                {
+                    color: red;
+                    font-size: large;
+                }
+            </style>
+            <script type="text/javascript">
+            
+            function pushlocal()
+            {
+                data = [{"email":"akhiltrivedi@outlook.com","pass":"akhil@1","name":"akhil","car1":"zen","year1":"2012","car2":"","year2":"","member":"no","mobile":"(903) 309-8713"},{"email":"anandpatel@gmail.com","pass":"Smith@1","name":"suresh","car1":"zen","year1":"2012","car2":"","year2":"","member":"yes","mobile":"(903) 309-8799"},{"email":"contact@akhiltrivedi.com","pass@1":"akhil@1","name":"rakesh","car1":"zen","year1":"2012","car2":"","year2":"","member":"no","mobile":"(903) 309-2233"}];
+
+              newarray = localStorage.setItem('person',JSON.stringify(data));
+               
+            }
+            </script>
+        </head>
+        <body ng-controller="loginctrl" onload="pushlocal()">
+        <div class="container"><br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br><div class="jumbotron" align="center">
+                <h2>Car Management System</h2>
+                <h3>Login</h3>
+            </div>
+            <br>
+            <div  class="col-md-6 col-md-offset-3">
+                <form ng-submit="loginctrl.submit()" name="myForm" class="form-group">
+                    <input  id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class="form-control" type="email" ng-model="loginctrl.user.email" name="email" placeholder="Enter Email Address" required/>
+                    <span ng-show="myForm.email.$touched && myForm.email.$error.required"><b class="color">This is a required field</b></span> <span ng-show=" myForm.$dirty && myForm.email.$invalid"><b class="color">This field is invalid</b></span><br/>
+                    <input type="password" ng-minlength="" ng-maxlength="" ng-model="loginctrl.user.pass" class="form-control" name="pass" id="pass" placeholder="Enter Password" required>
+                    <span ng-show="myForm.pass.$touched && myForm.pass.$error.required"><b class="color">This is a required field</b></span> 
+                    <br>
+                    <input  type="submit"  class="form-control" value="Login" name="log" id="log"  ng-model="loginctrl.user.log" ng-click="check()">
+                </form>
+                <h4></h4>
+                <br>
+                <div class="modal-footer">&copy; akhil trivedi</div>
+            </div>
+        </div>
+        </body>
+        </html>

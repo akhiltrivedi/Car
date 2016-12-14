@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en"  ng-app="myApp">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/bootstrap.css" >
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="search.js"></script>
+    <script src="view.js" ></script>
+
+    <style>
+        .color
+        {
+            color: red;
+            font-size: large;
+        }
+    </style>
+    <script type="text/javascript">
+        angular.module('myApp', [])
+                .controller('editctrl', [function() {
+                    var self = this;
+                    self.submit = function() {
+                        console.log('Form is submitted with following user', self.user);
+                    };
+                }]);</script>
+</head>
+<body    ng-controller="editctrl as DefaultCtrl" onload="view()">
+<div class="container"><br>
+    <div class="jumbotron">
+        <h1>Car Management System</h1>
+        <h2>Edit Customer Details & Add Car</h2>
+    </div>
+    <form class="form-group" ng-submit="DefaultCtrl.submit()" name="myForm" id="DefaultCtrl">
+        <div>
+            <h2>Add Car</h2>
+            <label>Select Car</label>
+            <select class="form-control" name="scar" id="scar" ng-model="DefaultCtrl.user.scar" required>
+                <option value="">--select--</option>
+                <option value="Omni">Omni</option>
+                <option value="Zen">Zen</option>
+            </select>
+            <span ng-show="myForm.scar.$touched && myForm.scar.$error.required"><b class="color">This is a required field</b></span><br>
+            <label>Select Year</label>
+            <select class="form-control" name="scar1" id="scar1" ng-model="DefaultCtrl.user.scar1" required>
+                <option value="">--select--</option>
+                <option value="2015">2015</option>
+                <option value="2014">2014</option>
+            </select>
+            <span ng-show="myForm.scar1.$touched && myForm.scar1.$error.required"><b class="color">This is a required field</b></span><br>
+            <input type="submit" class="btn-primary" value="Submit" onclick="ins()">
+            &nbsp;&nbsp;
+            <input type="reset" class="btn-primary" value="Cancel">
+            <br>
+            <br>
+            <h2>Edit Details</h2>
+            <label for="ism">Member </label>
+            <input type="checkbox" class="checkbox-inline" id="ism" value="Member" required>
+            <br>
+            <label for="name">Name :</label>
+            <input type="text" class="form-control" placeholder="Enter Name" id="name" name="fname" ng-model="DefaultCtrl.user.fname" required>
+            <br>
+            <span ng-show="myForm.fname.$touched && myForm.fname.$error.required"><b class="color">This is a required field</b></span><br>
+            <label for="email">Email :</label>
+            <input name="email" type="text" class="form-control" placeholder="Enter Email" id="email" ng-model="DefaultCtrl.user.email" required>
+            <br>
+            <span ng-show="myForm.email.$touched && myForm.email.$error.required"><b class="color">This is a required field</b></span><br>
+            <label for="phone">Phone :</label>
+            <input name="phone" type="tel" class="form-control" placeholder="Enter Phone" id="phone" ng-model="DefaultCtrl.user.phone" required>
+            <br>
+            <span ng-show="myForm.phone.$touched && myForm.phone.$error.required"><b class="color">This is a required field</b></span><br>
+            <input type="submit" class="btn-primary" value="Submit"  value="search" id="sbtn" ng-disabled="myForm.$invalid">
+            &nbsp;&nbsp;
+            <input type="submit" class="btn-primary" value="Cancel">
+        </div>
+        <br>
+        <h2>View Car Details</h2>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Car</th>
+                    <th>Year</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Maruti Suzuki Alto</td>
+                    <td>2015</td>
+                    <td><img src="images/delete.png"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+
+        
+<button onclick="my()" ></button>
+
+        <script>
+        function my(){
+            var associativeArray = {}
+
+associativeArray['key1'] = 'value1';
+associativeArray['key2'] = 'value2';
+associativeArray['key3'] = 'value3';
+associativeArray['key4'] = 'value4';
+associativeArray['key5'] = 'value5';
+
+var value = 'value1';
+for(var key in associativeArray)
+{
+    if(associativeArray[key]==value)
+         console.log(key);
+}
+
+}
+        </script>
+      <!--people.filter(function (person) { return person.dinner == "sushi" });-->

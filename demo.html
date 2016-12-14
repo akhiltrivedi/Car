@@ -1,0 +1,28 @@
+<script src=”/Scripts/angular-cookies-1.0.0rc10.js” type=”text/javascript”></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+<script type="text/javascript">
+    angular.module('myApp', ['ngCookies'])
+            .controller('AppController'.controller('LogonController', [function ($scope, $http, $location, $cookieStore)
+            {
+                $cookieStore.put('loggedin', 'true');
+                $cookieStore.put('loggedin',"");
+                $scope.loggedIn = $cookieStore.get('loggedin');if ($scope.loggedIn == 'true') {
+                $scope.loggedOut = "";
+            }
+                else {
+                $scope.loggedOut = "true";
+            }
+
+            }]);
+
+
+</script>
+
+
+<ul ng-app="myApp" ng-controller="AppController">
+    <li ng-show=”loggedIn”><a href=”search.html”>MANAGE SITES</a></li>
+    <li ng-show=”loggedIn”><a href=”search.html”>UPDATE DETAILS</a></li>
+    <li ng-show=”loggedIn”><a href=”/#signout”>SIGN OUT</a></li>  <li ng-show=”loggedOut”><a href=”/#”>HOME</a></li>
+    <li ng-show=”loggedOut”><a href=”/#signup”>SIGN UP FOR FREE</a></li>
+    <li ng-show=”loggedOut”><a href=”/index.html”>SIGN IN</a></li>
+</ul>

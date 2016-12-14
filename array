@@ -1,0 +1,67 @@
+[{"email":"akhiltrivedi@outlook.com","pass":"akhil@1","name":"akhil","car1":"zen","year1":"2012","car2":"","year2":"","member":"no","mobile":"(903) 309-8713"},
+{"email":"anandpatel@gmail.com","pass":"Smith@1","name":"suresh","car1":"zen","year1":"2012","car2":"","year2":"","member":"yes","mobile":"(903) 309-8799"},
+{"email":"contact@akhiltrivedi.com","pass@1":"akhil@1","name":"rakesh","car1":"zen","year1":"2012","car2":"","year2":"","member":"no","mobile":"(903) 309-2233"}]
+
+[{"email":"akhiltrivedi@outlook.com","pass":"akhil@1","name":"jenil","member":"no","mobile":"(903) 309-8713","car1":"zen","year1":"2012"}]
+
+{email:"",pass:"",name:"",car:"",year:"",member:"",mobile:"")
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.angularjs.org/1.1.2/angular.min.js"></script>
+    <script type="text/javascript">
+        var myApp = angular.module('myApp', []);
+
+        myApp.factory('myService', function() {
+            return {
+                foo: function() {
+                    alert("I'm foo!");
+                }
+            };
+        });
+
+        myApp.run(function($rootScope, myService) {
+            $rootScope.appData = myService;
+        });
+
+        myApp.controller('MainCtrl', ['$scope', function($scope){
+
+        }]);
+
+    </script>
+</head>
+<body ng-controller="MainCtrl">
+    <button ng-click="appData.foo()">Call foo</button>
+</body>
+</html>
+$http({
+  method: 'GET',
+  url: '/Edit.html'
+}).then(function check(response) {
+    // this callback will be called asynchronously
+    // when the response is available
+  }
+  });\
+
+
+   getalb =localStorage.getItem('person');
+
+      if (!JSON.parse(getalb))
+      {
+          var newd = {"name":Pname,"email":Pemail,"pass":myObject[0].pass,"mobile":Pmob,"car1":newcar,"car2":Pcar,"year1":newye,"year2":Pyear,"member":Pmem};
+          localStorage.setItem('person', JSON.stringify(newd));
+          alert("Data Inserted Successfully..");
+
+      } else {
+          // ---------------------------------------------
+          var newd = {"name":Pname,"email":Pemail,"pass":myObject[0].pass,"mobile":Pmob,"car1":newcar,"car2":Pcar,"year1":newye,"year2":Pyear,"member":Pmem};
+          myArray = getalb;
+          myArray = myArray.replace('[','');
+          myArray = myArray.replace(']','');
+          newArray=JSON.stringify(newd);
+          farray ='['+myArray+','+newArray+']';
+          alert("Data Inserted Successfully..");
+          localStorage.setItem('person',farray);
+
+      }
